@@ -1,8 +1,4 @@
 /**
- * Utility functions that can be used across different classes
- */
-
-/**
  * Debounce function - delays the execution of a function until after a specified delay
  * @param {Function} func - The function to debounce
  * @param {number} delay - The delay in milliseconds
@@ -69,18 +65,15 @@ export function formatCurrency(amount, currency = 'USD', locale = 'en-US') {
     }
 }
 
-// Example usage:
-// import { debounce, deepClone, formatCurrency } from './first.js';
-//
-// // Debounce example
-// const debouncedSearch = debounce((query) => {
-//     console.log('Searching for:', query);
-// }, 300);
-//
-// // Deep clone example
-// const original = { name: 'John', hobbies: ['reading', 'gaming'] };
-// const cloned = deepClone(original);
-//
-// // Format currency example
-// const price = formatCurrency(1234.56); // "$1,234.56"
-// const euroPrice = formatCurrency(1234.56, 'EUR', 'de-DE'); // "1.234,56 €"
+export function getCurrentTime() {
+    return new Date().toLocaleString();
+}
+
+export function getCurrentDate() {
+    return new Date().toLocaleDateString();
+}
+
+export function getCurrentDay() {
+    return new Date().toLocaleDateString('en-US', { weekday: 'long' });
+}
+

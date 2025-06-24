@@ -1,4 +1,4 @@
-import { debounce, deepClone, formatCurrency } from './first.js';
+import { debounce, deepClone, formatCurrency } from './second.js';
 
 /**
  * ShoppingCart class that demonstrates usage of utility functions from first.js
