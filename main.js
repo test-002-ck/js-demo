@@ -1,5 +1,5 @@
 import { debounce, deepClone, formatCurrency } from './first.js';
-import { ShoppingCart } from './class1.js';
+import { ShoppingCart } from './class2.js';
 
 /**
  * Main application class that demonstrates the usage of utility functions
@@ -82,9 +82,6 @@ class ShoppingApp {
         
         // Demonstrate cart functionality
         this.demonstrateCartFeatures();
-        
-        // Show final summary
-        this.showFinalSummary();
     }
 
     /**
@@ -207,31 +204,6 @@ class ShoppingApp {
         }
     }
 
-    /**
-     * Show final summary of the demonstration
-     */
-    showFinalSummary() {
-        console.log('\n📊 Final Summary:');
-        
-        const finalSummary = this.cart.getCartSummary();
-        console.log(`   Items in cart: ${finalSummary.itemCount}`);
-        console.log(`   Total items: ${finalSummary.totalItems}`);
-        console.log(`   Final total: ${finalSummary.formattedTotal}`);
-        
-        console.log('\n   Items in cart:');
-        finalSummary.items.forEach((item, index) => {
-            console.log(`   ${index + 1}. ${item.name} x${item.quantity} - ${item.formattedPrice}`);
-        });
-        
-        console.log('\n✅ Demo completed successfully!');
-        console.log('\n💡 Key Features Demonstrated:');
-        console.log('   • Debounce function for search optimization');
-        console.log('   • Deep cloning for data integrity');
-        console.log('   • Currency formatting with locale support');
-        console.log('   • Shopping cart with add/remove/update operations');
-        console.log('   • Search functionality with debouncing');
-        console.log('   • Currency and locale switching');
-    }
 
     /**
      * Get cart instance for external use
