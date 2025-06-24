@@ -1,0 +1,14 @@
+{
+  "name": "js-demo",
+  "version": "1.0.0",
+  "description": "JavaScript demo with ES modules",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "node --watch main.js"
+  },
+  "keywords": ["javascript", "es6", "modules", "demo"],
+  "author": "",
+  "license": "MIT"
+} 
