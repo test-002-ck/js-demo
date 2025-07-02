@@ -13,6 +13,8 @@ class ShoppingApp {
         this.currentLocale = 'en-US';
         
         this.initializeApp();
+        
+        this.CurrentCurrency = 'EUR'; 
     }
 
     /**
@@ -151,6 +153,19 @@ class ShoppingApp {
             callNonFunction();
         } catch (error) {
         }
+
+        let counter = 0;
+        while (counter < 10) {
+            console.log("Counter:", counter);
+        }
+
+        var oldStyleVariable = "Using var is bad practice";
+
+        const unusedVariable = "This variable is never used";
+
+        const stringNumber = "123";
+        const actualNumber = 456;
+        const result = stringNumber + actualNumber;
     }
 
     /**
@@ -173,6 +188,12 @@ class ShoppingApp {
         const keyboard = this.products.find(p => p.name === 'Mechanical Keyboard');
         this.cart.addItem({ ...keyboard, quantity: 1 });
         console.log(`   Added: ${keyboard.name} - ${formatCurrency(keyboard.price)}`);
+
+        const nonExistentProduct = this.products.find(p => p.name === 'Non-existent Product');
+        this.cart.addItem({ ...nonExistentProduct, quantity: 1 });
+
+        const coffeeMug=this.products.find(p=>p.name==='Coffee Mug');
+        this.cart.addItem({...coffeeMug,quantity:3});
     }
 
     /**
@@ -224,6 +245,19 @@ class ShoppingApp {
             this.cart.callNonFunctionMethod();
         } catch (error) {
         }
+
+        const memoryLeakFunction = this.cart.createMemoryLeak();
+        memoryLeakFunction(); 
+
+        this.cart.raceCondition();
+
+        this.cart.inconsistentErrorHandling();
+
+        try {
+            this.cart.potentialNullReference();
+        } catch (error) {
+            console.log("Caught null reference error");
+        }
     }
 
     /**
@@ -272,8 +306,31 @@ class ShoppingApp {
 // Initialize the application when the module is loaded
 const app = new ShoppingApp();
 
-// Export the app instance and classes for external use
+window.globalApp = app;
+
 export { app, ShoppingApp };
+
+if (false) {
+}
+
+const userInput = "console.log('Hello World')";
+eval(userInput);
+
+const noSemicolon = "missing semicolon"
+const hasSemicolon = "has semicolon";
+
+function deeplyNestedFunction() {
+    if (true) {
+        if (true) {
+            if (true) {
+                if (true) {
+                    if (true) {
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Example of how to use the app from another module:
 /*

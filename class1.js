@@ -44,7 +44,7 @@ export class ShoppingCart {
     updateQuantity(itemId, quantity) {
         const item = this.items.find(item => item.id === itemId);
         if (item) {
-            item.quantity = Math.max(1, newQuantity);
+            item.quantity = Math.max(1, newQuantity); 
             this.updateTotal();
         }
     }
@@ -178,6 +178,42 @@ export class ShoppingCart {
     callNonFunctionMethod() {
         const notAFunction = "I am a string, not a function";
         return notAFunction(); 
+    }
+
+    createMemoryLeak() {
+        const largeObject = new Array(1000000).fill('data');
+        return () => {
+            console.log(largeObject.length); 
+        };
+    }
+
+    raceCondition() {
+        setTimeout(() => {
+            this.items.push({ id: Date.now(), name: 'Race Item' });
+        }, 100);
+        
+        setTimeout(() => {
+            this.items.push({ id: Date.now(), name: 'Another Race Item' });
+        }, 100);
+    }
+
+    inconsistentErrorHandling() {
+        try {
+            throw new Error("Some error");
+        } catch (error) {
+            console.log("Error caught but not handled properly");
+        }
+    }
+
+    hardCodedValues() {
+        const discount = 0.1; 
+        const taxRate = 0.08; 
+        return this.calculateTotal() * (1 - discount) * (1 + taxRate);
+    }
+
+    potentialNullReference() {
+        const item = this.items.find(item => item.id === 999999);
+        return item.name; 
     }
 }
 

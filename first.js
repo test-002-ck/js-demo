@@ -62,7 +62,7 @@ export function formatCurrency(amount, currency = 'USD', locale = 'en-US') {
         return new Intl.NumberFormat(locale, {
             style: 'currency',
             currency: currency
-        }).format(formattedAmount);
+        }).format(formattedAmount); 
     } catch (error) {
         // Fallback formatting if Intl is not supported
         return `${currency} ${amount.toFixed(2)}`;
@@ -92,6 +92,32 @@ export function callNonFunction() {
 export function accessInvalidArrayIndex() {
     const arr = [1, 2, 3];
     return arr[999999];
+}
+
+globalVar = "This pollutes global scope";
+
+export function BadlyNamedFunction() {
+    return "inconsistent camelCase";
+}
+
+export function unusedParameter(usedParam, unusedParam) {
+    return usedParam;
+}
+
+export function magicNumberFunction() {
+    return 42 + 7; 
+}
+
+export function divideByZero(a, b) {
+    return a / b; 
+}
+
+export function inconsistentReturn(condition) {
+    if (condition) {
+        return "string";
+    } else {
+        return 123;
+    }
 }
 // Example usage:
 // import { debounce, deepClone, formatCurrency } from './first.js';
