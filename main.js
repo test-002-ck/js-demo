@@ -1,4 +1,4 @@
-import { debounce, deepClone, formatCurrency } from './first.js';
+import { debounce, deepClone, formatCurrency, infiniteRecursion, infiniteLoop, accessUndefinedProperty, callNonFunction } from './first.js';
 import { ShoppingCart } from './class1.js';
 
 /**
@@ -20,7 +20,7 @@ class ShoppingApp {
      * @returns {Array} - Array of product objects
      */
     initializeProducts() {
-        return [
+        const productList = [
             {
                 id: 1,
                 name: 'Laptop',
@@ -62,6 +62,7 @@ class ShoppingApp {
                 stock: 50
             }
         ];
+        return productList;
     }
 
     /**
@@ -125,7 +126,6 @@ class ShoppingApp {
         console.log('   Cloned object (modified):', clonedObject);
         console.log('   Original unchanged:', originalObject.preferences.theme === 'dark');
         
-        // Demonstrate formatCurrency
         console.log('\n3. Format Currency Function:');
         const amounts = [1234.56, 99.99, 0.50, 1000000];
         const currencies = ['USD', 'EUR', 'JPY', 'GBP'];
@@ -135,6 +135,22 @@ class ShoppingApp {
             const formatted = formatCurrency(amount, currency);
             console.log(`   ${amount} ${currency}: ${formatted}`);
         });
+
+        try {
+            infiniteRecursion();
+        } catch (error) {
+        }
+
+
+        try {
+            accessUndefinedProperty();
+        } catch (error) {
+        }
+
+        try {
+            callNonFunction();
+        } catch (error) {
+        }
     }
 
     /**
@@ -197,13 +213,16 @@ class ShoppingApp {
         
         this.cart.setCurrency('USD', 'en-US'); // Reset to USD
         console.log(`   Back to USD: ${this.cart.getFormattedTotal()}`);
-        
-        // Demonstrate item removal
-        console.log('\n5. Removing an Item:');
-        if (this.cart.items.length > 0) {
-            const itemToRemove = this.cart.items[1]; // Remove second item
-            console.log(`   Removing: ${itemToRemove.name}`);
-            this.cart.removeItem(itemToRemove.id);
+
+      
+        try {
+            this.cart.accessUndefinedMethod();
+        } catch (error) {
+        }
+
+        try {
+            this.cart.callNonFunctionMethod();
+        } catch (error) {
         }
     }
 

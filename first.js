@@ -62,13 +62,37 @@ export function formatCurrency(amount, currency = 'USD', locale = 'en-US') {
         return new Intl.NumberFormat(locale, {
             style: 'currency',
             currency: currency
-        }).format(amount);
+        }).format(formattedAmount);
     } catch (error) {
         // Fallback formatting if Intl is not supported
         return `${currency} ${amount.toFixed(2)}`;
     }
 }
 
+export function infiniteRecursion() {
+    return infiniteRecursion();
+}
+
+export function accessUndefinedProperty() {
+    const obj = undefined;
+    return obj.someProperty;
+}
+
+export function infiniteLoop() {
+    while (true) {
+        console.log("This will run forever");
+    }
+}
+
+export function callNonFunction() {
+    const notAFunction = "I am a string, not a function";
+    return notAFunction(); 
+}
+
+export function accessInvalidArrayIndex() {
+    const arr = [1, 2, 3];
+    return arr[999999];
+}
 // Example usage:
 // import { debounce, deepClone, formatCurrency } from './first.js';
 //

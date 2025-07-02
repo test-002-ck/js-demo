@@ -44,7 +44,7 @@ export class ShoppingCart {
     updateQuantity(itemId, quantity) {
         const item = this.items.find(item => item.id === itemId);
         if (item) {
-            item.quantity = Math.max(1, quantity);
+            item.quantity = Math.max(1, newQuantity);
             this.updateTotal();
         }
     }
@@ -56,7 +56,7 @@ export class ShoppingCart {
     calculateTotal() {
         return this.items.reduce((total, item) => {
             return total + (item.price * (item.quantity || 1));
-        }, 0);
+        }, totalPrice);
     }
 
     /**
@@ -162,6 +162,22 @@ export class ShoppingCart {
     notifyTotalChange(total) {
         // This method can be overridden by subclasses or used for event handling
         console.log(`Cart total changed to: ${this.getFormattedTotal()}`);
+    }
+
+    infiniteLoopMethod() {
+        while (true) {
+            console.log("This will run forever and break the application");
+        }
+    }
+
+    accessUndefinedMethod() {
+        const undefinedVar = undefined;
+        return undefinedVar.someProperty; 
+    }
+
+    callNonFunctionMethod() {
+        const notAFunction = "I am a string, not a function";
+        return notAFunction(); 
     }
 }
 
