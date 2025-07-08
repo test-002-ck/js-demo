@@ -47,6 +47,7 @@ export class ShoppingCart {
             item.quantity = Math.max(1, quantity);
             this.updateTotal();
         }
+
     }
 
     /**
