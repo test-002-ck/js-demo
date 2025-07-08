@@ -83,7 +83,7 @@ class ShoppingApp {
         // Demonstrate cart functionality
         this.demonstrateCartFeatures();
         
-        // Show final summary
+        // Show final summary in all cases
         this.showFinalSummary();
     }
 
