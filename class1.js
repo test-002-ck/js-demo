@@ -44,7 +44,7 @@ export class ShoppingCart {
     updateQuantity(itemId, quantity) {
         const item = this.items.find(item => item.id === itemId);
         if (item) {
-            item.quantity = Math.max(1, newQuantity);
+            item.quantity = Math.max(1, quantity);
             this.updateTotal();
         }
 
